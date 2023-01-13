@@ -20,6 +20,7 @@ body{
 .cartas {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     margin: 7px 100px;
 }
 
@@ -52,13 +53,15 @@ body{
   }
 
 .back-face {
-    transform: rotateY(180deg);
-  }
-
-  .card:hover .back-face {
-    transform: rotateY(0deg);
-  }
-
-  .card:hover .front-face {
     transform: rotateY(-180deg);
+}
+
+.front-face {
+    backface-visibility: hidden;
+}
+
+.virar{
+    transition: all .5s;
+    transform-style: preserve-3d;
+    transform: rotateY(180deg);
   }
