@@ -8,10 +8,13 @@ let cartasPossiveis = ['imagens/bobrossparrot.gif', 'imagens/bobrossparrot.gif',
 
 let cartasEscolhidas = [];
 let contador = 0;
+let contadorAcertos = 0;
 
 
 let click1;
 let click2;
+
+let site = document.querySelector('.cartas');
 
 function virarcarta(cartaclicada){
 
@@ -21,36 +24,40 @@ function virarcarta(cartaclicada){
     console.log(contador);
     if (click1 === undefined){
     click1 = cartaclicada.innerHTML; 
+
+
+    //impedir que as cartas clicadas sejam desviradas
+    cartaclicada.classList.add('disabled');
+
     }
 
     else if (click1 !== undefined && click2 === undefined){
         click2 = cartaclicada.innerHTML;
-        //cartaclicada.classList.add('disabled');
 
+        cartaclicada.classList.add('disabled');
         if (click1 === click2){
+
+            //manter as repostas certas viradas
             mantervirada();
+
+            contadorAcertos = contadorAcertos + 1;
+            fimdejogo();
         }
         else {
+
+            //desvirar as respostas erradas
           setTimeout(desvirar, 1000);
 
         }
 
-        let site = document.querySelector('.cartas');
-         // site.classList.toggle('disabledSite');
-         // setTimeout(bloqclick, 1000);
+        //impedir que mais de 2 cartas sejam viradas ao mesmo tempo
+
+        site.classList.toggle('disabledSite');
+        setTimeout(bloqclick, 1000);
+
     }
 }
 
-function desvirar(){
-    let colecao = document.getElementsByClassName('virar');
-    let desvira1 = colecao[0];
-    let desvira2 = colecao[1];
-    desvira1.classList.remove('virar');
-    desvira2.classList.remove('virar');
-    click1 = undefined;
-    click2 = undefined;
-    colecao = [];
-}
 
 function mantervirada(){
     let colecao = document.getElementsByClassName('virar');
@@ -64,11 +71,26 @@ function mantervirada(){
     click1 = undefined;
     click2 = undefined;
     colecao = [];
-   
-
-    let habilitarclick = document.getElementsByClassName('disabled');
 }
 
+function desvirar(){
+    let colecao = document.getElementsByClassName('virar');
+    let desvira1 = colecao[0];
+    let desvira2 = colecao[1];
+    desvira1.classList.remove('virar', 'disabled');
+    desvira2.classList.remove('virar', 'disabled');
+
+
+    click1 = undefined;
+    click2 = undefined;
+    colecao = [];
+}
+
+function bloqclick (){
+    let site = document.querySelector('.cartas');
+    site.classList.toggle('disabledSite');
+
+}
 
 let novaCarta;
 let listaCartas;
@@ -77,6 +99,7 @@ let cartasBagunçadas = [];
 
 function inicio() {
     quantidade = Number(prompt('Com quantas cartas deseja jogar?'));
+
 if (quantidade >= 4 && quantidade <= 14 && quantidade % 2 === 0) {
     for (let i=0; i<=(quantidade-1); i++) {
         cartasEscolhidas.push(cartasPossiveis[i]);
@@ -109,7 +132,13 @@ else {
     alert('Número inválido');
     inicio();
 }
+}
 
+function fimdejogo (){
+    console.log(contadorAcertos);
+if ((contadorAcertos*2)===cartasEscolhidas.length){
+    alert(`Você ganhou em ${contadorAcertos*2} jogadas!`);
+}
 }
 
 inicio();
