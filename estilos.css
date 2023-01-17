@@ -105,7 +105,7 @@ color: #86BD8D;
 .title{   
     width:100vw;
     height: 63px;
-    margin: 40px auto;
+    margin: 30px auto;
 
     font-family: 'Roboto', sans-serif;
     font-style: normal;
@@ -117,4 +117,19 @@ color: #86BD8D;
     color: #75B79E;
     }
 
-}
+.tempo {
+    width: 46px;
+    height: 47px;
+    position: initial;
+    margin: 0 auto;
+    
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 42px;
+    letter-spacing: -0.004em;
+
+color: #86BD8D;    
+
+}}
