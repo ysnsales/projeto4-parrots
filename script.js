@@ -41,7 +41,7 @@ function virarcarta(cartaclicada){
             mantervirada();
 
             contadorAcertos = contadorAcertos + 1;
-            fimdejogo();
+            setTimeout(fimdejogo,500);
         }
         else {
 
@@ -98,7 +98,7 @@ let posicao = [];
 let cartasBagunçadas = [];
 
 function inicio() {
-    quantidade = Number(prompt('Com quantas cartas deseja jogar?'));
+    quantidade = Number(prompt('Com quantas cartas deseja jogar?(Insira um número par entre 4 e 14)'));
 
 if (quantidade >= 4 && quantidade <= 14 && quantidade % 2 === 0) {
     for (let i=0; i<=(quantidade-1); i++) {
