@@ -37,6 +37,7 @@ body{
     border-radius: 5px;
     transform-style: preserve-3d;
     transition: all 0.8s ease;
+    cursor: pointer;
 }
 
 .card img {
@@ -82,6 +83,22 @@ body{
     pointer-events: none;
 }
 
+.tempo {
+    width: 46px;
+    height: 47px;
+
+    position: fixed;
+    right: 32px;
+    top:16px;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 42px;
+    letter-spacing: -0.004em;
+
+color: #86BD8D;
+}
 
 @media (max-width: 614px) {
 

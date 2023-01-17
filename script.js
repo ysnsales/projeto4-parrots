@@ -125,8 +125,10 @@ if (quantidade >= 4 && quantidade <= 14 && quantidade % 2 === 0) {
         listaCartas  = document.querySelector('.cartas').innerHTML;
         listaCartas = listaCartas + novaCarta;
         document.querySelector('.cartas').innerHTML = listaCartas;
-            }
 
+        
+            }
+            setInterval(cronometro,1000);
         }     
 
 else {
@@ -138,7 +140,7 @@ else {
 function fimdejogo (){
     console.log(contadorAcertos);
 if ((contadorAcertos*2)===cartasEscolhidas.length){
-    alert(`Você ganhou em ${contadorAcertos*2} jogadas!`);
+    alert(`Você ganhou em ${contadorAcertos*2} jogadas! A duração do jogo foi de ${tempo} segundos!`);
     jogardenovo();
 }
 
@@ -148,6 +150,7 @@ function jogardenovo (){
     if (novoJogo==="sim"){
         document.querySelector('.cartas').innerHTML = [];
         inicio();
+        
     }
 
     else if (novoJogo!=="não" && novoJogo!=="sim"){
@@ -156,6 +159,13 @@ function jogardenovo (){
 
     }
 }
+}
+
+let tempo = 0;
+let idInterval;
+function cronometro(){
+    tempo++;
+    document.querySelector(".tempo").innerHTML = tempo;
 }
 
 inicio();
