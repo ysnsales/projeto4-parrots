@@ -98,13 +98,14 @@ let posicao = [];
 let cartasBagunçadas = [];
 
 function inicio() {
-    quantidade = Number(prompt('Com quantas cartas deseja jogar?(Insira um número par entre 4 e 14)'));
+    quantidade = Number(prompt('Com quantas cartas deseja jogar? (Insira um número par entre 4 e 14)'));
 
 if (quantidade >= 4 && quantidade <= 14 && quantidade % 2 === 0) {
     for (let i=0; i<=(quantidade-1); i++) {
         cartasEscolhidas.push(cartasPossiveis[i]);
         
         posicao.push(i);
+        
     }
     for (let j = 0; j < quantidade; j++) {
               let indice = posicao[Math.floor(Math.random()*posicao.length)];
@@ -112,12 +113,12 @@ if (quantidade >= 4 && quantidade <= 14 && quantidade % 2 === 0) {
               posicao.splice(posicao.indexOf(indice), 1)
 
 
-              novaCarta = `<li class="card" id=${j} onclick="virarcarta(this)">
+              novaCarta = `<li data-test="card" class="card" id=${j} onclick="virarcarta(this)">
         <div class="front-face face" >
-          <img src="imagens/back.png"/>
+          <img data-test="face-down-image" src="imagens/back.png"/>
         </div>
         <div class="back-face face">
-          <img src=${cartasEscolhidas[cartasBagunçadas[j]]} />
+          <img data-test="face-up-image" src=${cartasEscolhidas[cartasBagunçadas[j]]} />
         </li> `
         
 
@@ -138,6 +139,22 @@ function fimdejogo (){
     console.log(contadorAcertos);
 if ((contadorAcertos*2)===cartasEscolhidas.length){
     alert(`Você ganhou em ${contadorAcertos*2} jogadas!`);
+    jogardenovo();
+}
+
+function jogardenovo (){
+    let novoJogo = prompt('Gostaria de reiniciar a partida? (Responda com "sim" ou "não".)');
+
+    if (novoJogo==="sim"){
+        document.querySelector('.cartas').innerHTML = [];
+        inicio();
+    }
+
+    else if (novoJogo!=="não" && novoJogo!=="sim"){
+        alert('Resposta inválida!');
+        jogardenovo();
+
+    }
 }
 }
 
