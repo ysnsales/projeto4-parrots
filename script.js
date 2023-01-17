@@ -138,9 +138,8 @@ else {
 }
 
 function fimdejogo (){
-    console.log(contadorAcertos);
 if ((contadorAcertos*2)===cartasEscolhidas.length){
-    alert(`Você ganhou em ${contadorAcertos*2} jogadas! A duração do jogo foi de ${tempo} segundos!`);
+    alert(`Você ganhou em ${contador} jogadas! A duração do jogo foi de ${tempo} segundos!`);
     jogardenovo();
 }
 
@@ -148,8 +147,7 @@ function jogardenovo (){
     let novoJogo = prompt('Gostaria de reiniciar a partida? (Responda com "sim" ou "não".)');
 
     if (novoJogo==="sim"){
-        document.querySelector('.cartas').innerHTML = [];
-        inicio();
+        window.location.reload(true);
         
     }
 
