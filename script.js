@@ -128,7 +128,7 @@ if (quantidade >= 4 && quantidade <= 14 && quantidade % 2 === 0) {
 
         
             }
-            setInterval(cronometro,1000);
+            idInterval = setInterval(cronometro,1000);
         }     
 
 else {
@@ -155,6 +155,10 @@ function jogardenovo (){
         alert('Resposta inválida!');
         jogardenovo();
 
+    }
+
+    else {
+        clearInterval(idInterval);
     }
 }
 }
